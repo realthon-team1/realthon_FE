@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:fishing/app/data/extension/go_router_x.dart';
+import 'package:fishing/app/feature/chatbot/chatbot_page.dart';
 import 'package:fishing/app/feature/error/error_page.dart';
+import 'package:fishing/app/feature/history/history_page.dart';
 import 'package:fishing/app/feature/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,18 +12,26 @@ import 'package:shadcn_ui/shadcn_ui.dart';
 
 class RouterService extends GetxService {
   static RouterService get to => Get.find();
+  final GlobalKey loadingDialogKey = GlobalKey();
+
+  bool get isLoadingDialogOpen => loadingDialogKey.currentContext != null;
 
   String? queryParameter(String key) =>
       goRouter.currentUri.queryParameters[key];
 
   Future<T?> openDialog<T>({
     required Widget Function(BuildContext context) builder,
+    barrierDismissible = false,
   }) async {
     final context = goRouter.context;
-    if (context != null) {
+    if (context != null && loadingDialogKey.currentContext == null) {
       return showShadDialog(
         context: context,
-        builder: (context) => builder(context),
+        barrierDismissible: barrierDismissible,
+        builder: (context) => Container(
+          key: loadingDialogKey,
+          child: builder(context),
+        ),
       );
     }
     return null;
@@ -76,7 +86,26 @@ class RouterService extends GetxService {
             state: state,
             child: const HomePage(),
           ),
-          routes: [],
+          routes: [
+            GoRoute(
+              path: 'history',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: const HistoryPage(),
+              ),
+            ),
+            GoRoute(
+              path: 'chatbot',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                context: context,
+                state: state,
+                child: const ChatbotPage(),
+              ),
+            ),
+          ],
         ),
         GoRoute(
           path: '/license',
@@ -89,7 +118,7 @@ class RouterService extends GetxService {
       ],
       errorBuilder: (context, state) {
         return const ErrorPage(
-          errorMessage: "Page not found",
+          errorMessage: "페이지를 찾을 수 없습니다.",
         );
       },
     );
