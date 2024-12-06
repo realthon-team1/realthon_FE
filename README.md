@@ -59,6 +59,30 @@ MIT
     │       └── geo.py
     └── requirements.txt
 ```
+```cpp
+📦lib
+ ┣ 📂app
+ ┃ ┣ 📂data
+ ┃ ┃ ┣ 📂api
+ ┃ ┃ ┣ 📂extension
+ ┃ ┃ ┣ 📂model
+ ┃ ┃ ┣ 📂service
+ ┃ ┣ 📂feature
+ ┃ ┃ ┣ 📂chatbot
+ ┃ ┃ ┃ ┣ 📂logic
+ ┃ ┃ ┃ ┣ 📂widget
+ ┃ ┃ ┣ 📂error
+ ┃ ┃ ┣ 📂history
+ ┃ ┃ ┃ ┣ 📂logic
+ ┃ ┃ ┣ 📂home
+ ┃ ┃ ┃ ┣ 📂logic
+ ┃ ┃ ┃ ┣ 📂widget
+ ┃ ┣ 📂widget
+ ┃ ┃ ┣ 📂dialog
+ ┣ 📜main.dart
+ ┣ 📜secret.dart
+ ┗ 📜service.dart
+```
 
 ## 기능적 구현
 
