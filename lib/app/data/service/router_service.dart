@@ -8,6 +8,7 @@ import 'package:fishing/app/feature/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class RouterService extends GetxService {
@@ -98,12 +99,17 @@ class RouterService extends GetxService {
             ),
             GoRoute(
               path: 'chatbot',
-              pageBuilder: (context, state) =>
-                  buildPageWithDefaultTransition<void>(
-                context: context,
-                state: state,
-                child: const ChatbotPage(),
-              ),
+              pageBuilder: (context, state) {
+                final extra = state.extra as Map<String, dynamic>;
+                final image = extra['image'] as XFile;
+                return buildPageWithDefaultTransition<void>(
+                  context: context,
+                  state: state,
+                  child: ChatbotPage(
+                    image: image,
+                  ),
+                );
+              },
             ),
           ],
         ),

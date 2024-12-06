@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:fishing/app/data/service/router_service.dart';
 import 'package:fishing/app/data/service/server_api_service.dart';
 import 'package:fishing/app/widget/dialog/loading_dialog.dart';
@@ -66,12 +69,22 @@ class HomeController extends GetxController {
         );
       },
     );
-    final queryResult = await ServerApiService.to.queryImage(image);
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    final queryResult = await ServerApiService.to.queryImage(
+      image,
+      androidInfo.id,
+    );
     if (RouterService.to.isLoadingDialogOpen) {
       RouterService.to.goRouter.pop();
     }
-    if (queryResult) {
-      RouterService.to.goRouter.push("/chatbot");
+    if (queryResult != null) {
+      RouterService.to.goRouter.push(
+        "/chatbot",
+        extra: {
+          "image": image,
+        },
+      );
     } else {
       RouterService.to.showSimpleToast(
         "이미지 분석에 실패했습니다. 다른 이미지를 시도해주세요.",

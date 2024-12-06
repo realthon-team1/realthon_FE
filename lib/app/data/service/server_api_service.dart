@@ -1,9 +1,11 @@
+import 'dart:developer';
+
 import 'package:fishing/app/data/api/dio_api.dart';
 import 'package:fishing/app/data/extension/dio_response_x.dart';
+import 'package:fishing/app/data/model/image_query_result.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart' as dio;
-import 'package:image/image.dart' as img;
 
 class ServerApiService extends GetxService {
   static ServerApiService get to => Get.find();
@@ -13,29 +15,29 @@ class ServerApiService extends GetxService {
 
   final api = DioApi();
 
-  Future<bool> queryImage(XFile image) async {
-    await Future.delayed(const Duration(seconds: 2));
-    return true;
-    // final res = await api.post(
-    //   "/image",
-    //   data: {},
-    // );
-    // if (res.isOk) {
-    //   return true;
-    // }
-    // return false;
+  Future<ImageQueryResult?> queryImage(XFile image, String deviceId) async {
+    final res = await api.post(
+      "/check-fish?device_id=$deviceId",
+      data: dio.FormData.fromMap({
+        "fish_image": await convertMultipart(image),
+      }),
+    );
+    if (res.isOk) {
+      log(res.data);
+      return ImageQueryResult.fromJson(res.data);
+    }
+    return null;
   }
 
   Future<bool> checkLocation() async {
-    await Future.delayed(const Duration(seconds: 2));
-    return true;
-    // final res = await api.get(
-    //   "/location",
-    // );
-    // if (res.isOk) {
-    //   return true;
-    // }
-    // return false;
+    final res = await api.post(
+      "/check-fishing-zone",
+      data: {
+        "langitude": 0,
+        "latitude": 0,
+      },
+    );
+    return res.isOk;
   }
 
   Future<dio.MultipartFile> convertMultipart(XFile image) async {
