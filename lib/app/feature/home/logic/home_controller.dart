@@ -1,4 +1,5 @@
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:fishing/app/data/service/cache_service.dart';
 import 'package:fishing/app/data/service/router_service.dart';
 import 'package:fishing/app/data/service/server_api_service.dart';
 import 'package:fishing/app/widget/dialog/loading_dialog.dart';
@@ -99,10 +100,13 @@ class HomeController extends GetxController {
     // );
     // return;
     if (queryResult != null && !queryResult.fish_name.contains("ERR")) {
+      CacheService.to.setImageCache(
+        image,
+        queryResult.fish_name,
+      );
       RouterService.to.goRouter.push(
         "/chatbot",
         extra: {
-          "image": image,
           "queryResult": queryResult,
         },
       );

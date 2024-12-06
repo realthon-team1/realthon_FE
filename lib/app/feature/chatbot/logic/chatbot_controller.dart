@@ -1,26 +1,46 @@
 import 'dart:developer';
+import 'dart:io';
 
+import 'package:fishing/app/data/model/history_question.dart';
 import 'package:fishing/app/data/model/image_query_result.dart';
 import 'package:fishing/app/data/model/text_query_result.dart';
+import 'package:fishing/app/data/service/cache_service.dart';
 import 'package:fishing/app/data/service/server_api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:sprung/sprung.dart';
 
 class ChatbotController extends GetxController {
   static ChatbotController get to => Get.find();
   ChatbotController({
-    required this.image,
     required this.imageQueryResult,
     required this.scrollController,
+    required List<HistoryQuestion> historyQuestions,
   }) {
+    () async {
+      image = await CacheService.to.getImageCache(imageQueryResult.fish_name);
+    }();
     questionCandidates = imageQueryResult.fish_questions;
+    for (final q in historyQuestions) {
+      queries.add(q.query);
+      queryResult.add(q.query_result);
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      scrollController.animateTo(
+        scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Sprung.overDamped,
+      );
+    });
   }
 
-  final XFile image;
   final ImageQueryResult imageQueryResult;
   final ScrollController scrollController;
+
+  final _image = Rxn<File>();
+  File? get image => _image.value;
+  set image(File? value) => _image.value = value;
 
   final _questionCandidates = <String>[].obs;
   List<String> get questionCandidates => _questionCandidates;

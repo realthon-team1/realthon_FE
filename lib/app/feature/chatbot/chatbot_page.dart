@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:fishing/app/data/extension/build_context_x.dart';
+import 'package:fishing/app/data/model/history_question.dart';
 import 'package:fishing/app/data/model/image_query_result.dart';
 import 'package:fishing/app/feature/chatbot/logic/chatbot_controller.dart';
 import 'package:fishing/app/feature/chatbot/widget/chatbot_candidates.dart';
@@ -9,18 +10,17 @@ import 'package:fishing/app/feature/chatbot/widget/chatbot_chat_list.dart';
 import 'package:fishing/app/feature/chatbot/widget/chatbot_query_result_info.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 
 class ChatbotPage extends StatefulWidget {
   const ChatbotPage({
     super.key,
-    required this.image,
     required this.queryResult,
+    this.historyQuestions,
   });
 
-  final XFile image;
   final ImageQueryResult queryResult;
+  final List<HistoryQuestion>? historyQuestions;
 
   @override
   State<ChatbotPage> createState() => _ChatbotPageState();
@@ -34,8 +34,8 @@ class _ChatbotPageState extends State<ChatbotPage> {
   void initState() {
     super.initState();
     Get.put(ChatbotController(
-      image: widget.image,
       imageQueryResult: widget.queryResult,
+      historyQuestions: widget.historyQuestions ?? [],
       scrollController: _scrollController,
     ));
   }
@@ -82,13 +82,25 @@ class _ChatbotPageState extends State<ChatbotPage> {
                           children: [
                             ChatbotChat(
                               isSender: true,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.file(
-                                  File(widget.image.path),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                              child: Obx(() {
+                                final image = ChatbotController.to.image;
+                                if (image == null) {
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[200],
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(10)),
+                                    ),
+                                  );
+                                }
+                                return ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.file(
+                                    image,
+                                    fit: BoxFit.cover,
+                                  ),
+                                );
+                              }),
                             ),
                             const SizedBox(height: 10),
                             ChatbotChat(

@@ -8,12 +8,19 @@ part of 'history.dart';
 
 _$HistoryImpl _$$HistoryImplFromJson(Map<String, dynamic> json) =>
     _$HistoryImpl(
-      id: (json['id'] as num).toInt(),
-      now: DateTime.parse(json['now'] as String),
+      id: json['id'] as String,
+      image_url: json['image_url'] as String,
+      image_query_result: ImageQueryResult.fromJson(
+          json['image_query_result'] as Map<String, dynamic>),
+      queries: (json['queries'] as List<dynamic>)
+          .map((e) => HistoryQuestion.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$HistoryImplToJson(_$HistoryImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'now': instance.now.toIso8601String(),
+      'image_url': instance.image_url,
+      'image_query_result': instance.image_query_result,
+      'queries': instance.queries,
     };

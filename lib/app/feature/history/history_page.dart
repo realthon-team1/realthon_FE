@@ -1,8 +1,12 @@
 import 'package:fishing/app/data/extension/build_context_x.dart';
 import 'package:fishing/app/data/extension/datetime_x.dart';
+import 'package:fishing/app/data/service/router_service.dart';
 import 'package:fishing/app/feature/history/logic/history_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shadcn_ui/shadcn_ui.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -58,16 +62,53 @@ class _HistoryPageState extends State<HistoryPage> {
             );
           }
           return ListView.builder(
-            itemCount: histories.length,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 17,
+              vertical: 10,
+            ),
             itemBuilder: (context, index) {
               final history = histories[index];
-              return ListTile(
-                title: Text(
-                  history.now.simpleDateFormat,
-                  style: context.getTextTheme.p,
+              return GestureDetector(
+                onTap: () {
+                  context.push(
+                    '/chatbot',
+                    extra: {
+                      "image": history.image_url,
+                      "queryResult": history.image_query_result,
+                      "historyQuestions": history.queries,
+                    },
+                  );
+                },
+                child: ShadCard(
+                  footer: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Divider(),
+                      Text(
+                        history.image_query_result.fish_name,
+                        style: context.getTextTheme.large,
+                      ),
+                      Text(
+                        history.image_query_result.fish_description,
+                        style: context.getTextTheme.p,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                  child: SizedBox(
+                    height: 160,
+                    child: Center(
+                      child: Image.network(
+                        history.image_url,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
               );
             },
+            itemCount: histories.length,
           );
         },
       ),
