@@ -59,11 +59,12 @@ class _HistoryPageState extends State<HistoryPage> {
               ),
             );
           }
-          return ListView.builder(
+          return ListView.separated(
             padding: const EdgeInsets.symmetric(
               horizontal: 17,
               vertical: 10,
             ),
+            separatorBuilder: (context, index) => const SizedBox(height: 10),
             itemBuilder: (context, index) {
               final history = histories[index];
               return GestureDetector(
