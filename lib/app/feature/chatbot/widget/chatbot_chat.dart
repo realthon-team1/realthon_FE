@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:fishing/app/data/extension/build_context_x.dart';
-import 'package:fishing/app/feature/chatbot/logic/chatbot_controller.dart';
 import 'package:flutter/material.dart';
 
 class ChatbotChat extends StatelessWidget {

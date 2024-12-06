@@ -4,7 +4,6 @@ import 'package:fishing/app/feature/home/widget/home_appbar.dart';
 import 'package:fishing/app/feature/home/widget/home_drawer.dart';
 import 'package:fishing/app/feature/home/widget/home_location_check_button.dart';
 import 'package:fishing/app/feature/home/widget/home_nav_item.dart';
-import 'package:fishing/app/widget/e_cached_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:get/get.dart';

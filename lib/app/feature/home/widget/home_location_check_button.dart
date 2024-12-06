@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeLocationCheckButton extends StatefulWidget {
-  const HomeLocationCheckButton({Key? key}) : super(key: key);
+  const HomeLocationCheckButton({super.key});
 
   @override
-  _HomeLocationCheckButtonState createState() =>
+  State<HomeLocationCheckButton> createState() =>
       _HomeLocationCheckButtonState();
 }
 

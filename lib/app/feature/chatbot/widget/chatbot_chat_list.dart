@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:fishing/app/data/extension/build_context_x.dart';
 import 'package:fishing/app/feature/chatbot/logic/chatbot_controller.dart';
 import 'package:fishing/app/feature/chatbot/widget/chatbot_chat.dart';
