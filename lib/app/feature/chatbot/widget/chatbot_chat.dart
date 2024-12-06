@@ -5,30 +5,50 @@ import 'package:fishing/app/feature/chatbot/logic/chatbot_controller.dart';
 import 'package:flutter/material.dart';
 
 class ChatbotChat extends StatelessWidget {
-  const ChatbotChat({super.key, required this.isSender});
+  const ChatbotChat({super.key, required this.isSender, required this.child});
 
   final bool isSender;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final image = ChatbotController.to.image;
     return Align(
       alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        width: context.getWidth * 0.6,
-        height: context.getWidth * 0.6,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        decoration: BoxDecoration(
-          color: isSender ? Colors.grey[200] : null,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Image.file(
-            File(image.path),
-            fit: BoxFit.cover,
+      child: Row(
+        crossAxisAlignment:
+            isSender ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (!isSender)
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: context.getColorScheme.primary,
+                border: Border.all(
+                  color: Colors.grey[200]!,
+                  width: 1,
+                ),
+              ),
+              child: const Center(
+                child: Icon(
+                  Icons.phishing,
+                  color: Colors.white,
+                  size: 20,
+                ),
+              ),
+            ),
+          Container(
+            width: context.getWidth * 0.7,
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            decoration: BoxDecoration(
+              color: isSender ? Colors.grey[200] : null,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: child,
           ),
-        ),
+        ],
       ),
     );
   }

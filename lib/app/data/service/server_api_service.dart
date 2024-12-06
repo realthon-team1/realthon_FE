@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:fishing/app/data/api/dio_api.dart';
 import 'package:fishing/app/data/extension/dio_response_x.dart';
 import 'package:fishing/app/data/model/image_query_result.dart';
+import 'package:fishing/app/data/model/text_query_result.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart' as dio;
@@ -16,15 +17,37 @@ class ServerApiService extends GetxService {
   final api = DioApi();
 
   Future<ImageQueryResult?> queryImage(XFile image, String deviceId) async {
-    final res = await api.post(
-      "/check-fish?device_id=$deviceId",
-      data: dio.FormData.fromMap({
-        "fish_image": await convertMultipart(image),
-      }),
-    );
-    if (res.isOk) {
-      log(res.data);
-      return ImageQueryResult.fromJson(res.data);
+    try {
+      final res = await api.post(
+        "/check-fish?device_id=$deviceId",
+        data: dio.FormData.fromMap({
+          "fish_image": await convertMultipart(image),
+        }),
+      );
+      if (res.isOk) {
+        log(res.data.toString());
+        return ImageQueryResult.fromJson(res.data);
+      }
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
+  }
+
+  Future<TextQueryResult?> queryAdditonalInfo(
+    String query,
+    String context,
+  ) async {
+    try {
+      final res = await api.post(
+        "/additional-fish-info?before_prompt=$context&current_prompt=$query",
+        data: {},
+      );
+      if (res.isOk) {
+        return TextQueryResult.fromJson(res.data);
+      }
+    } catch (e) {
+      log(e.toString());
     }
     return null;
   }

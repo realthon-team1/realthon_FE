@@ -29,7 +29,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
           Icon(Icons.phishing, color: context.getColorScheme.primary, size: 20),
           const SizedBox(width: 3),
           Text(
-            "AquaGuard",
+            "AquaLens",
             style: context.getTextTheme.h4,
           ),
         ],

@@ -20,8 +20,8 @@ ImageQueryResult _$ImageQueryResultFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ImageQueryResult {
-  String get fish_name => throw _privateConstructorUsedError;
   bool get fishing_avaliability => throw _privateConstructorUsedError;
+  String get fish_name => throw _privateConstructorUsedError;
   String get fish_description => throw _privateConstructorUsedError;
   List<String> get fish_questions => throw _privateConstructorUsedError;
 
@@ -42,8 +42,8 @@ abstract class $ImageQueryResultCopyWith<$Res> {
       _$ImageQueryResultCopyWithImpl<$Res, ImageQueryResult>;
   @useResult
   $Res call(
-      {String fish_name,
-      bool fishing_avaliability,
+      {bool fishing_avaliability,
+      String fish_name,
       String fish_description,
       List<String> fish_questions});
 }
@@ -63,20 +63,20 @@ class _$ImageQueryResultCopyWithImpl<$Res, $Val extends ImageQueryResult>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fish_name = null,
     Object? fishing_avaliability = null,
+    Object? fish_name = null,
     Object? fish_description = null,
     Object? fish_questions = null,
   }) {
     return _then(_value.copyWith(
-      fish_name: null == fish_name
-          ? _value.fish_name
-          : fish_name // ignore: cast_nullable_to_non_nullable
-              as String,
       fishing_avaliability: null == fishing_avaliability
           ? _value.fishing_avaliability
           : fishing_avaliability // ignore: cast_nullable_to_non_nullable
               as bool,
+      fish_name: null == fish_name
+          ? _value.fish_name
+          : fish_name // ignore: cast_nullable_to_non_nullable
+              as String,
       fish_description: null == fish_description
           ? _value.fish_description
           : fish_description // ignore: cast_nullable_to_non_nullable
@@ -98,8 +98,8 @@ abstract class _$$ImageQueryResultImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String fish_name,
-      bool fishing_avaliability,
+      {bool fishing_avaliability,
+      String fish_name,
       String fish_description,
       List<String> fish_questions});
 }
@@ -117,20 +117,20 @@ class __$$ImageQueryResultImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fish_name = null,
     Object? fishing_avaliability = null,
+    Object? fish_name = null,
     Object? fish_description = null,
     Object? fish_questions = null,
   }) {
     return _then(_$ImageQueryResultImpl(
-      fish_name: null == fish_name
-          ? _value.fish_name
-          : fish_name // ignore: cast_nullable_to_non_nullable
-              as String,
       fishing_avaliability: null == fishing_avaliability
           ? _value.fishing_avaliability
           : fishing_avaliability // ignore: cast_nullable_to_non_nullable
               as bool,
+      fish_name: null == fish_name
+          ? _value.fish_name
+          : fish_name // ignore: cast_nullable_to_non_nullable
+              as String,
       fish_description: null == fish_description
           ? _value.fish_description
           : fish_description // ignore: cast_nullable_to_non_nullable
@@ -147,8 +147,8 @@ class __$$ImageQueryResultImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ImageQueryResultImpl implements _ImageQueryResult {
   _$ImageQueryResultImpl(
-      {required this.fish_name,
-      required this.fishing_avaliability,
+      {required this.fishing_avaliability,
+      required this.fish_name,
       required this.fish_description,
       required final List<String> fish_questions})
       : _fish_questions = fish_questions;
@@ -157,9 +157,9 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
       _$$ImageQueryResultImplFromJson(json);
 
   @override
-  final String fish_name;
-  @override
   final bool fishing_avaliability;
+  @override
+  final String fish_name;
   @override
   final String fish_description;
   final List<String> _fish_questions;
@@ -172,7 +172,7 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
 
   @override
   String toString() {
-    return 'ImageQueryResult(fish_name: $fish_name, fishing_avaliability: $fishing_avaliability, fish_description: $fish_description, fish_questions: $fish_questions)';
+    return 'ImageQueryResult(fishing_avaliability: $fishing_avaliability, fish_name: $fish_name, fish_description: $fish_description, fish_questions: $fish_questions)';
   }
 
   @override
@@ -180,10 +180,10 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageQueryResultImpl &&
-            (identical(other.fish_name, fish_name) ||
-                other.fish_name == fish_name) &&
             (identical(other.fishing_avaliability, fishing_avaliability) ||
                 other.fishing_avaliability == fishing_avaliability) &&
+            (identical(other.fish_name, fish_name) ||
+                other.fish_name == fish_name) &&
             (identical(other.fish_description, fish_description) ||
                 other.fish_description == fish_description) &&
             const DeepCollectionEquality()
@@ -192,7 +192,7 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, fish_name, fishing_avaliability,
+  int get hashCode => Object.hash(runtimeType, fishing_avaliability, fish_name,
       fish_description, const DeepCollectionEquality().hash(_fish_questions));
 
   /// Create a copy of ImageQueryResult
@@ -214,8 +214,8 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
 
 abstract class _ImageQueryResult implements ImageQueryResult {
   factory _ImageQueryResult(
-      {required final String fish_name,
-      required final bool fishing_avaliability,
+      {required final bool fishing_avaliability,
+      required final String fish_name,
       required final String fish_description,
       required final List<String> fish_questions}) = _$ImageQueryResultImpl;
 
@@ -223,9 +223,9 @@ abstract class _ImageQueryResult implements ImageQueryResult {
       _$ImageQueryResultImpl.fromJson;
 
   @override
-  String get fish_name;
-  @override
   bool get fishing_avaliability;
+  @override
+  String get fish_name;
   @override
   String get fish_description;
   @override

@@ -1,6 +1,7 @@
-import 'dart:developer';
+import 'dart:convert';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:fishing/app/data/model/image_query_result.dart';
 import 'package:fishing/app/data/service/router_service.dart';
 import 'package:fishing/app/data/service/server_api_service.dart';
 import 'package:fishing/app/widget/dialog/loading_dialog.dart';
@@ -78,11 +79,34 @@ class HomeController extends GetxController {
     if (RouterService.to.isLoadingDialogOpen) {
       RouterService.to.goRouter.pop();
     }
-    if (queryResult != null) {
+    // final aa = ImageQueryResult(
+    //   fishing_avaliability: true,
+    //   fish_name: "고등어",
+    //   fish_description:
+    //       "기름진 생선으로 오메가-3 지방산이 풍부하며, 구이, 조림, 회 등 다양한 방법으로 요리 가능. 전 세계적으로 널리 분포",
+    //   fish_questions: [
+    //     "고등어는 어떤 미끼를 사용해서 잡나요?",
+    //     "고등어 요리법에는 어떤 것들이 있나요?",
+    //     "고등어의 제철은 언제인가요?",
+    //     "고등어를 잡을 수 있는 지역은 어디인가요?",
+    //     "고등어의 크기 제한은 어떻게 되나요?"
+    //   ],
+    // );
+
+    // RouterService.to.goRouter.push(
+    //   "/chatbot",
+    //   extra: {
+    //     "image": image,
+    //     "queryResult": aa,
+    //   },
+    // );
+    // return;
+    if (queryResult != null && !queryResult.fish_name.contains("ERR")) {
       RouterService.to.goRouter.push(
         "/chatbot",
         extra: {
           "image": image,
+          "queryResult": queryResult,
         },
       );
     } else {

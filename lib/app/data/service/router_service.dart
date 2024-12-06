@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:fishing/app/data/extension/go_router_x.dart';
+import 'package:fishing/app/data/model/image_query_result.dart';
 import 'package:fishing/app/feature/chatbot/chatbot_page.dart';
 import 'package:fishing/app/feature/error/error_page.dart';
 import 'package:fishing/app/feature/history/history_page.dart';
@@ -102,11 +103,13 @@ class RouterService extends GetxService {
               pageBuilder: (context, state) {
                 final extra = state.extra as Map<String, dynamic>;
                 final image = extra['image'] as XFile;
+                final queryResult = extra['queryResult'] as ImageQueryResult;
                 return buildPageWithDefaultTransition<void>(
                   context: context,
                   state: state,
                   child: ChatbotPage(
                     image: image,
+                    queryResult: queryResult,
                   ),
                 );
               },
