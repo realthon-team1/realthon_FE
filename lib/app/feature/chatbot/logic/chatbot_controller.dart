@@ -18,7 +18,7 @@ class ChatbotController extends GetxController {
     required List<HistoryQuestion> historyQuestions,
   }) {
     () async {
-      image = await CacheService.to.getImageCache(imageQueryResult.fish_name);
+      image = await CacheService.to.getImageCache(imageQueryResult.db_id);
     }();
     questionCandidates = imageQueryResult.fish_questions;
     for (final q in historyQuestions) {
@@ -82,10 +82,12 @@ class ChatbotController extends GetxController {
     final result = await ServerApiService.to.queryAdditonalInfo(
       candidate,
       _getQuriesContext(),
+      imageQueryResult.db_id,
     );
     log(result.toString());
     if (result == null) {
       queries.removeLast();
+      queryResult.removeLast();
       return;
     }
     queryResult.removeLast();

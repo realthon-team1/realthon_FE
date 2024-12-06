@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:fishing/app/data/extension/build_context_x.dart';
@@ -84,6 +85,7 @@ class _ChatbotPageState extends State<ChatbotPage> {
                               isSender: true,
                               child: Obx(() {
                                 final image = ChatbotController.to.image;
+                                log("image: $image");
                                 if (image == null) {
                                   return Container(
                                     decoration: BoxDecoration(

@@ -12,6 +12,7 @@ class ImageQueryResult with _$ImageQueryResult {
     required String fish_name,
     required String fish_description,
     required List<String> fish_questions,
+    required String db_id,
   }) = _ImageQueryResult;
 
   factory ImageQueryResult.fromJson(Map<String, dynamic> json) =>

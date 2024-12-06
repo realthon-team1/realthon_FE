@@ -37,10 +37,11 @@ class ServerApiService extends GetxService {
   Future<TextQueryResult?> queryAdditonalInfo(
     String query,
     String context,
+    String dbId,
   ) async {
     try {
       final res = await api.post(
-        "/additional-fish-info?before_prompt=$context&current_prompt=$query",
+        "/additional-fish-info?before_prompt=$context&current_prompt=$query&db_id=$dbId",
         data: {},
       );
       if (res.isOk) {

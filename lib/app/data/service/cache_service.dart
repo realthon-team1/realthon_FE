@@ -24,12 +24,8 @@ class CacheService extends GetxService {
   }
 
   Future<File?> getImageCache(String path) async {
-    final FileInfo? fileInfo = await _cacheManager.getFileFromCache(path);
+    final image = await _cacheManager.getSingleFile(path);
 
-    if (fileInfo != null) {
-      return File(fileInfo.file.path);
-    }
-
-    return null;
+    return image;
   }
 }

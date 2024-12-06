@@ -24,6 +24,7 @@ mixin _$ImageQueryResult {
   String get fish_name => throw _privateConstructorUsedError;
   String get fish_description => throw _privateConstructorUsedError;
   List<String> get fish_questions => throw _privateConstructorUsedError;
+  String get db_id => throw _privateConstructorUsedError;
 
   /// Serializes this ImageQueryResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,8 @@ abstract class $ImageQueryResultCopyWith<$Res> {
       {bool fishing_avaliability,
       String fish_name,
       String fish_description,
-      List<String> fish_questions});
+      List<String> fish_questions,
+      String db_id});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$ImageQueryResultCopyWithImpl<$Res, $Val extends ImageQueryResult>
     Object? fish_name = null,
     Object? fish_description = null,
     Object? fish_questions = null,
+    Object? db_id = null,
   }) {
     return _then(_value.copyWith(
       fishing_avaliability: null == fishing_avaliability
@@ -85,6 +88,10 @@ class _$ImageQueryResultCopyWithImpl<$Res, $Val extends ImageQueryResult>
           ? _value.fish_questions
           : fish_questions // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      db_id: null == db_id
+          ? _value.db_id
+          : db_id // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -101,7 +108,8 @@ abstract class _$$ImageQueryResultImplCopyWith<$Res>
       {bool fishing_avaliability,
       String fish_name,
       String fish_description,
-      List<String> fish_questions});
+      List<String> fish_questions,
+      String db_id});
 }
 
 /// @nodoc
@@ -121,6 +129,7 @@ class __$$ImageQueryResultImplCopyWithImpl<$Res>
     Object? fish_name = null,
     Object? fish_description = null,
     Object? fish_questions = null,
+    Object? db_id = null,
   }) {
     return _then(_$ImageQueryResultImpl(
       fishing_avaliability: null == fishing_avaliability
@@ -139,6 +148,10 @@ class __$$ImageQueryResultImplCopyWithImpl<$Res>
           ? _value._fish_questions
           : fish_questions // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      db_id: null == db_id
+          ? _value.db_id
+          : db_id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -150,7 +163,8 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
       {required this.fishing_avaliability,
       required this.fish_name,
       required this.fish_description,
-      required final List<String> fish_questions})
+      required final List<String> fish_questions,
+      required this.db_id})
       : _fish_questions = fish_questions;
 
   factory _$ImageQueryResultImpl.fromJson(Map<String, dynamic> json) =>
@@ -171,8 +185,11 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
   }
 
   @override
+  final String db_id;
+
+  @override
   String toString() {
-    return 'ImageQueryResult(fishing_avaliability: $fishing_avaliability, fish_name: $fish_name, fish_description: $fish_description, fish_questions: $fish_questions)';
+    return 'ImageQueryResult(fishing_avaliability: $fishing_avaliability, fish_name: $fish_name, fish_description: $fish_description, fish_questions: $fish_questions, db_id: $db_id)';
   }
 
   @override
@@ -187,13 +204,19 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
             (identical(other.fish_description, fish_description) ||
                 other.fish_description == fish_description) &&
             const DeepCollectionEquality()
-                .equals(other._fish_questions, _fish_questions));
+                .equals(other._fish_questions, _fish_questions) &&
+            (identical(other.db_id, db_id) || other.db_id == db_id));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, fishing_avaliability, fish_name,
-      fish_description, const DeepCollectionEquality().hash(_fish_questions));
+  int get hashCode => Object.hash(
+      runtimeType,
+      fishing_avaliability,
+      fish_name,
+      fish_description,
+      const DeepCollectionEquality().hash(_fish_questions),
+      db_id);
 
   /// Create a copy of ImageQueryResult
   /// with the given fields replaced by the non-null parameter values.
@@ -217,7 +240,8 @@ abstract class _ImageQueryResult implements ImageQueryResult {
       {required final bool fishing_avaliability,
       required final String fish_name,
       required final String fish_description,
-      required final List<String> fish_questions}) = _$ImageQueryResultImpl;
+      required final List<String> fish_questions,
+      required final String db_id}) = _$ImageQueryResultImpl;
 
   factory _ImageQueryResult.fromJson(Map<String, dynamic> json) =
       _$ImageQueryResultImpl.fromJson;
@@ -230,6 +254,8 @@ abstract class _ImageQueryResult implements ImageQueryResult {
   String get fish_description;
   @override
   List<String> get fish_questions;
+  @override
+  String get db_id;
 
   /// Create a copy of ImageQueryResult
   /// with the given fields replaced by the non-null parameter values.

@@ -15,6 +15,7 @@ _$ImageQueryResultImpl _$$ImageQueryResultImplFromJson(
       fish_questions: (json['fish_questions'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      db_id: json['db_id'] as String,
     );
 
 Map<String, dynamic> _$$ImageQueryResultImplToJson(
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$ImageQueryResultImplToJson(
       'fish_name': instance.fish_name,
       'fish_description': instance.fish_description,
       'fish_questions': instance.fish_questions,
+      'db_id': instance.db_id,
     };

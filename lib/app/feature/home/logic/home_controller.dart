@@ -100,9 +100,9 @@ class HomeController extends GetxController {
     // );
     // return;
     if (queryResult != null && !queryResult.fish_name.contains("ERR")) {
-      CacheService.to.setImageCache(
+      await CacheService.to.setImageCache(
         image,
-        queryResult.fish_name,
+        queryResult.db_id,
       );
       RouterService.to.goRouter.push(
         "/chatbot",

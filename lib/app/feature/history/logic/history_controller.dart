@@ -35,6 +35,7 @@ class HistoryController extends GetxController {
             "고등어를 잡을 수 있는 지역은 어디인가요?",
             "고등어의 크기 제한은 어떻게 되나요?"
           ],
+          db_id: "str",
         ),
         queries: [
           HistoryQuestion(
