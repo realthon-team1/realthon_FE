@@ -6,7 +6,7 @@ class DioApi {
   DioApi() : _dio = Dio();
 
   final Dio _dio;
-  static const _host = "http://15.165.76.65:8000/api/v1";
+  static const _host = "http://52.79.129.94:8000";
 
   Future<Response> get(
     String path, {

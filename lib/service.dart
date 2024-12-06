@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:fishing/app/data/service/cache_service.dart';
 import 'package:fishing/app/data/service/router_service.dart';
 import 'package:fishing/app/data/service/server_api_service.dart';
 import 'package:fishing/secret.dart';
@@ -28,5 +29,6 @@ class Service {
   static Future<void> initGetx() async {
     await Get.putAsync(() => RouterService().init());
     await Get.putAsync(() => ServerApiService().init());
+    await Get.putAsync(() => CacheService().init());
   }
 }

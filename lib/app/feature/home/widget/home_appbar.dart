@@ -16,12 +16,20 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
           height: 1,
         ),
       ),
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
+      ),
+      centerTitle: true,
       title: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.phishing, color: context.getColorScheme.primary),
-          const SizedBox(width: 10),
+          Icon(Icons.phishing, color: context.getColorScheme.primary, size: 20),
+          const SizedBox(width: 3),
           Text(
-            "AquaGuard",
+            "AquaLens",
             style: context.getTextTheme.h4,
           ),
         ],
