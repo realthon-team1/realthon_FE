@@ -7,8 +7,8 @@ part 'history_question.g.dart';
 @freezed
 class HistoryQuestion with _$HistoryQuestion {
   factory HistoryQuestion({
-    required String query,
-    required TextQueryResult query_result,
+    required String question,
+    required TextQueryResult answer,
   }) = _HistoryQuestion;
 
   factory HistoryQuestion.fromJson(Map<String, dynamic> json) =>

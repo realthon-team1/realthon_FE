@@ -37,7 +37,7 @@ SDGs 14. Life Below Water
 
 
 ## 기능적 구현
-![image](https://github.com/user-attachments/assets/d37f103b-9902-4cf3-9e92-6c0606ecbb5c)
+![image.png](https://github.com/realthon-team1/realthon_FE/blob/main/image.png?raw=true)
 
 ## 기대 효과
 - 

@@ -20,8 +20,8 @@ HistoryQuestion _$HistoryQuestionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$HistoryQuestion {
-  String get query => throw _privateConstructorUsedError;
-  TextQueryResult get query_result => throw _privateConstructorUsedError;
+  String get question => throw _privateConstructorUsedError;
+  TextQueryResult get answer => throw _privateConstructorUsedError;
 
   /// Serializes this HistoryQuestion to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -39,9 +39,9 @@ abstract class $HistoryQuestionCopyWith<$Res> {
           HistoryQuestion value, $Res Function(HistoryQuestion) then) =
       _$HistoryQuestionCopyWithImpl<$Res, HistoryQuestion>;
   @useResult
-  $Res call({String query, TextQueryResult query_result});
+  $Res call({String question, TextQueryResult answer});
 
-  $TextQueryResultCopyWith<$Res> get query_result;
+  $TextQueryResultCopyWith<$Res> get answer;
 }
 
 /// @nodoc
@@ -59,17 +59,17 @@ class _$HistoryQuestionCopyWithImpl<$Res, $Val extends HistoryQuestion>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? query = null,
-    Object? query_result = null,
+    Object? question = null,
+    Object? answer = null,
   }) {
     return _then(_value.copyWith(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
+      question: null == question
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
               as String,
-      query_result: null == query_result
-          ? _value.query_result
-          : query_result // ignore: cast_nullable_to_non_nullable
+      answer: null == answer
+          ? _value.answer
+          : answer // ignore: cast_nullable_to_non_nullable
               as TextQueryResult,
     ) as $Val);
   }
@@ -78,9 +78,9 @@ class _$HistoryQuestionCopyWithImpl<$Res, $Val extends HistoryQuestion>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $TextQueryResultCopyWith<$Res> get query_result {
-    return $TextQueryResultCopyWith<$Res>(_value.query_result, (value) {
-      return _then(_value.copyWith(query_result: value) as $Val);
+  $TextQueryResultCopyWith<$Res> get answer {
+    return $TextQueryResultCopyWith<$Res>(_value.answer, (value) {
+      return _then(_value.copyWith(answer: value) as $Val);
     });
   }
 }
@@ -93,10 +93,10 @@ abstract class _$$HistoryQuestionImplCopyWith<$Res>
       __$$HistoryQuestionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String query, TextQueryResult query_result});
+  $Res call({String question, TextQueryResult answer});
 
   @override
-  $TextQueryResultCopyWith<$Res> get query_result;
+  $TextQueryResultCopyWith<$Res> get answer;
 }
 
 /// @nodoc
@@ -112,17 +112,17 @@ class __$$HistoryQuestionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? query = null,
-    Object? query_result = null,
+    Object? question = null,
+    Object? answer = null,
   }) {
     return _then(_$HistoryQuestionImpl(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
+      question: null == question
+          ? _value.question
+          : question // ignore: cast_nullable_to_non_nullable
               as String,
-      query_result: null == query_result
-          ? _value.query_result
-          : query_result // ignore: cast_nullable_to_non_nullable
+      answer: null == answer
+          ? _value.answer
+          : answer // ignore: cast_nullable_to_non_nullable
               as TextQueryResult,
     ));
   }
@@ -131,19 +131,19 @@ class __$$HistoryQuestionImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$HistoryQuestionImpl implements _HistoryQuestion {
-  _$HistoryQuestionImpl({required this.query, required this.query_result});
+  _$HistoryQuestionImpl({required this.question, required this.answer});
 
   factory _$HistoryQuestionImpl.fromJson(Map<String, dynamic> json) =>
       _$$HistoryQuestionImplFromJson(json);
 
   @override
-  final String query;
+  final String question;
   @override
-  final TextQueryResult query_result;
+  final TextQueryResult answer;
 
   @override
   String toString() {
-    return 'HistoryQuestion(query: $query, query_result: $query_result)';
+    return 'HistoryQuestion(question: $question, answer: $answer)';
   }
 
   @override
@@ -151,14 +151,14 @@ class _$HistoryQuestionImpl implements _HistoryQuestion {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HistoryQuestionImpl &&
-            (identical(other.query, query) || other.query == query) &&
-            (identical(other.query_result, query_result) ||
-                other.query_result == query_result));
+            (identical(other.question, question) ||
+                other.question == question) &&
+            (identical(other.answer, answer) || other.answer == answer));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, query, query_result);
+  int get hashCode => Object.hash(runtimeType, question, answer);
 
   /// Create a copy of HistoryQuestion
   /// with the given fields replaced by the non-null parameter values.
@@ -179,16 +179,16 @@ class _$HistoryQuestionImpl implements _HistoryQuestion {
 
 abstract class _HistoryQuestion implements HistoryQuestion {
   factory _HistoryQuestion(
-      {required final String query,
-      required final TextQueryResult query_result}) = _$HistoryQuestionImpl;
+      {required final String question,
+      required final TextQueryResult answer}) = _$HistoryQuestionImpl;
 
   factory _HistoryQuestion.fromJson(Map<String, dynamic> json) =
       _$HistoryQuestionImpl.fromJson;
 
   @override
-  String get query;
+  String get question;
   @override
-  TextQueryResult get query_result;
+  TextQueryResult get answer;
 
   /// Create a copy of HistoryQuestion
   /// with the given fields replaced by the non-null parameter values.

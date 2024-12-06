@@ -22,8 +22,8 @@ class ChatbotController extends GetxController {
     }();
     questionCandidates = imageQueryResult.fish_questions;
     for (final q in historyQuestions) {
-      queries.add(q.query);
-      queryResult.add(q.query_result);
+      queries.add(q.question);
+      queryResult.add(q.answer);
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {

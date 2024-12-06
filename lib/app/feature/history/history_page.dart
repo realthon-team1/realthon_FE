@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:fishing/app/data/extension/build_context_x.dart';
+import 'package:fishing/app/data/service/cache_service.dart';
 import 'package:fishing/app/feature/history/logic/history_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -70,7 +73,6 @@ class _HistoryPageState extends State<HistoryPage> {
                   context.push(
                     '/chatbot',
                     extra: {
-                      "image": history.image_url,
                       "queryResult": history.image_query_result,
                       "historyQuestions": history.queries,
                     },
@@ -96,10 +98,30 @@ class _HistoryPageState extends State<HistoryPage> {
                   child: SizedBox(
                     height: 160,
                     child: Center(
-                      child: Image.network(
-                        history.image_url,
-                        fit: BoxFit.cover,
-                      ),
+                      child: FutureBuilder(
+                          future: CacheService.to
+                              .getImageCache(history.image_query_result.db_id),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Container();
+                            }
+                            if (snapshot.hasError) {
+                              return Container();
+                            }
+
+                            if (snapshot.hasData) {
+                              final file = snapshot.data;
+                              if (file == null) {
+                                return Container();
+                              }
+                              return Image.memory(
+                                file.readAsBytesSync(),
+                                fit: BoxFit.cover,
+                              );
+                            }
+                            return Container();
+                          }),
                     ),
                   ),
                 ),

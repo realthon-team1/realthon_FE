@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:fishing/app/data/model/history.dart';
 import 'package:fishing/app/data/service/server_api_service.dart';
 import 'package:get/get.dart';
@@ -14,7 +17,11 @@ class HistoryController extends GetxController {
   }
 
   void _getHistories() async {
-    histories = await ServerApiService.to.getHistories();
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    log(androidInfo.id);
+    histories = await ServerApiService.to.getHistories(androidInfo.id);
+    log(histories.toString());
 
     // histories = [
     //   History(

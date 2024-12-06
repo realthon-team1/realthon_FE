@@ -20,8 +20,8 @@ History _$HistoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$History {
+  @JsonKey(name: "_id")
   String get id => throw _privateConstructorUsedError;
-  String get image_url => throw _privateConstructorUsedError;
   ImageQueryResult get image_query_result => throw _privateConstructorUsedError;
   List<HistoryQuestion> get queries => throw _privateConstructorUsedError;
 
@@ -40,8 +40,7 @@ abstract class $HistoryCopyWith<$Res> {
       _$HistoryCopyWithImpl<$Res, History>;
   @useResult
   $Res call(
-      {String id,
-      String image_url,
+      {@JsonKey(name: "_id") String id,
       ImageQueryResult image_query_result,
       List<HistoryQuestion> queries});
 
@@ -64,7 +63,6 @@ class _$HistoryCopyWithImpl<$Res, $Val extends History>
   @override
   $Res call({
     Object? id = null,
-    Object? image_url = null,
     Object? image_query_result = null,
     Object? queries = null,
   }) {
@@ -72,10 +70,6 @@ class _$HistoryCopyWithImpl<$Res, $Val extends History>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      image_url: null == image_url
-          ? _value.image_url
-          : image_url // ignore: cast_nullable_to_non_nullable
               as String,
       image_query_result: null == image_query_result
           ? _value.image_query_result
@@ -107,8 +101,7 @@ abstract class _$$HistoryImplCopyWith<$Res> implements $HistoryCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
-      String image_url,
+      {@JsonKey(name: "_id") String id,
       ImageQueryResult image_query_result,
       List<HistoryQuestion> queries});
 
@@ -130,7 +123,6 @@ class __$$HistoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? image_url = null,
     Object? image_query_result = null,
     Object? queries = null,
   }) {
@@ -138,10 +130,6 @@ class __$$HistoryImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      image_url: null == image_url
-          ? _value.image_url
-          : image_url // ignore: cast_nullable_to_non_nullable
               as String,
       image_query_result: null == image_query_result
           ? _value.image_query_result
@@ -159,8 +147,7 @@ class __$$HistoryImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$HistoryImpl implements _History {
   _$HistoryImpl(
-      {required this.id,
-      required this.image_url,
+      {@JsonKey(name: "_id") required this.id,
       required this.image_query_result,
       required final List<HistoryQuestion> queries})
       : _queries = queries;
@@ -169,9 +156,8 @@ class _$HistoryImpl implements _History {
       _$$HistoryImplFromJson(json);
 
   @override
+  @JsonKey(name: "_id")
   final String id;
-  @override
-  final String image_url;
   @override
   final ImageQueryResult image_query_result;
   final List<HistoryQuestion> _queries;
@@ -184,7 +170,7 @@ class _$HistoryImpl implements _History {
 
   @override
   String toString() {
-    return 'History(id: $id, image_url: $image_url, image_query_result: $image_query_result, queries: $queries)';
+    return 'History(id: $id, image_query_result: $image_query_result, queries: $queries)';
   }
 
   @override
@@ -193,8 +179,6 @@ class _$HistoryImpl implements _History {
         (other.runtimeType == runtimeType &&
             other is _$HistoryImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.image_url, image_url) ||
-                other.image_url == image_url) &&
             (identical(other.image_query_result, image_query_result) ||
                 other.image_query_result == image_query_result) &&
             const DeepCollectionEquality().equals(other._queries, _queries));
@@ -202,8 +186,8 @@ class _$HistoryImpl implements _History {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, image_url,
-      image_query_result, const DeepCollectionEquality().hash(_queries));
+  int get hashCode => Object.hash(runtimeType, id, image_query_result,
+      const DeepCollectionEquality().hash(_queries));
 
   /// Create a copy of History
   /// with the given fields replaced by the non-null parameter values.
@@ -223,17 +207,15 @@ class _$HistoryImpl implements _History {
 
 abstract class _History implements History {
   factory _History(
-      {required final String id,
-      required final String image_url,
+      {@JsonKey(name: "_id") required final String id,
       required final ImageQueryResult image_query_result,
       required final List<HistoryQuestion> queries}) = _$HistoryImpl;
 
   factory _History.fromJson(Map<String, dynamic> json) = _$HistoryImpl.fromJson;
 
   @override
+  @JsonKey(name: "_id")
   String get id;
-  @override
-  String get image_url;
   @override
   ImageQueryResult get image_query_result;
   @override

@@ -65,11 +65,12 @@ class ServerApiService extends GetxService {
     return res.isOk;
   }
 
-  Future<List<History>> getHistories() async {
-    // final res = await api.get("/get-histories");
-    // if (res.isOk) {
-    //   return (res.data as List).map((e) => History.fromJson(e)).toList();
-    // }
+  Future<List<History>> getHistories(String deviceId) async {
+    final res = await api.get("/get-history?device_id=$deviceId");
+    if (res.isOk) {
+      log(res.data.toString());
+      return (res.data as List).map((e) => History.fromJson(e)).toList();
+    }
     return [];
   }
 
