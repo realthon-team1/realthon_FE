@@ -8,8 +8,8 @@ part 'image_query_result.g.dart';
 @freezed
 class ImageQueryResult with _$ImageQueryResult {
   factory ImageQueryResult({
-    required String fish_name,
     required bool fishing_avaliability,
+    required String fish_name,
     required String fish_description,
     required List<String> fish_questions,
   }) = _ImageQueryResult;
