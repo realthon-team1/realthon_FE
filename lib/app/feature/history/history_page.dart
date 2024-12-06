@@ -1,10 +1,7 @@
 import 'package:fishing/app/data/extension/build_context_x.dart';
-import 'package:fishing/app/data/extension/datetime_x.dart';
-import 'package:fishing/app/data/service/router_service.dart';
 import 'package:fishing/app/feature/history/logic/history_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 

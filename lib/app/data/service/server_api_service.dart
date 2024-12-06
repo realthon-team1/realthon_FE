@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:fishing/app/data/api/dio_api.dart';
 import 'package:fishing/app/data/extension/dio_response_x.dart';
+import 'package:fishing/app/data/model/history.dart';
 import 'package:fishing/app/data/model/image_query_result.dart';
 import 'package:fishing/app/data/model/text_query_result.dart';
 import 'package:get/get.dart';
@@ -62,6 +63,14 @@ class ServerApiService extends GetxService {
       },
     );
     return res.isOk;
+  }
+
+  Future<List<History>> getHistories() async {
+    // final res = await api.get("/get-histories");
+    // if (res.isOk) {
+    //   return (res.data as List).map((e) => History.fromJson(e)).toList();
+    // }
+    return [];
   }
 
   Future<dio.MultipartFile> convertMultipart(XFile image) async {
