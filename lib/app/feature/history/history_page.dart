@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:fishing/app/data/extension/build_context_x.dart';
 import 'package:fishing/app/data/service/cache_service.dart';
 import 'package:fishing/app/feature/history/logic/history_controller.dart';
@@ -73,7 +71,9 @@ class _HistoryPageState extends State<HistoryPage> {
                   context.push(
                     '/chatbot',
                     extra: {
-                      "queryResult": history.image_query_result,
+                      "queryResult": history.image_query_result.copyWith(
+                        db_id: history.id,
+                      ),
                       "historyQuestions": history.queries,
                     },
                   );
@@ -99,8 +99,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     height: 160,
                     child: Center(
                       child: FutureBuilder(
-                          future: CacheService.to
-                              .getImageCache(history.image_query_result.db_id),
+                          future: CacheService.to.getImageCache(history.id),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
@@ -115,9 +114,12 @@ class _HistoryPageState extends State<HistoryPage> {
                               if (file == null) {
                                 return Container();
                               }
-                              return Image.memory(
-                                file.readAsBytesSync(),
-                                fit: BoxFit.cover,
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.memory(
+                                  file.readAsBytesSync(),
+                                  fit: BoxFit.cover,
+                                ),
                               );
                             }
                             return Container();

@@ -164,7 +164,7 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
       required this.fish_name,
       required this.fish_description,
       required final List<String> fish_questions,
-      required this.db_id})
+      this.db_id = ""})
       : _fish_questions = fish_questions;
 
   factory _$ImageQueryResultImpl.fromJson(Map<String, dynamic> json) =>
@@ -185,6 +185,7 @@ class _$ImageQueryResultImpl implements _ImageQueryResult {
   }
 
   @override
+  @JsonKey()
   final String db_id;
 
   @override
@@ -241,7 +242,7 @@ abstract class _ImageQueryResult implements ImageQueryResult {
       required final String fish_name,
       required final String fish_description,
       required final List<String> fish_questions,
-      required final String db_id}) = _$ImageQueryResultImpl;
+      final String db_id}) = _$ImageQueryResultImpl;
 
   factory _ImageQueryResult.fromJson(Map<String, dynamic> json) =
       _$ImageQueryResultImpl.fromJson;
